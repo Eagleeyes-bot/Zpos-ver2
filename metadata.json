@@ -1,0 +1,8 @@
+{
+  "name": "ZPOS",
+  "description": "Comprehensive Mobile Wholesale Management System featuring Inventory tracking, Sales management, Installment plans, Customer CRM, and Device scanning.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}

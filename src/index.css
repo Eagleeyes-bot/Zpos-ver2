@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  --color-blue-50: #f8fafc;
+  --color-blue-100: #f1f5f9;
+  --color-blue-200: #e2e8f0;
+  --color-blue-300: #cbd5e1;
+  --color-blue-400: #94a3b8;
+  --color-blue-500: #64748b;
+  --color-blue-600: #1e3a8a;
+  --color-blue-700: #172554;
+  --color-blue-800: #0f172a;
+  --color-blue-900: #020617;
+  
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  
+  --color-orange-50: #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+}
+
+#reader {
+  border: none !important;
+  background: black !important;
+}
+
+#reader__status_span {
+  display: none !important;
+}
+
+#reader__dashboard_section_csr button {
+  background-color: #111827 !important;
+  color: white !important;
+  border-radius: 0.75rem !important;
+  padding: 0.5rem 1rem !important;
+  font-weight: 700 !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border: none !important;
+  margin: 0.25rem !important;
+  cursor: pointer !important;
+}
+
+#reader__dashboard_section_csr select {
+  background-color: #f9fafb !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.75rem !important;
+  padding: 0.5rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+}
+
+#reader video {
+  width: 100% !important;
+  border-radius: 1.5rem !important;
+}

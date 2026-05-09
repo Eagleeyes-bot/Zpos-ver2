@@ -1,0 +1,145 @@
+{
+  "entities": {
+    "device": {
+      "title": "Device",
+      "description": "A mobile device in inventory",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who owns this record" },
+        "imei": { "type": "string", "description": "Unique IMEI or Serial Number" },
+        "brand": { "type": "string" },
+        "model": { "type": "string" },
+        "costPrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "supplierId": { "type": "string" },
+        "status": { "type": "string", "enum": ["available", "sold", "missing", "returned"] },
+        "purchaseDate": { "type": "string", "format": "date-time" },
+        "saleId": { "type": "string" },
+        "registeredBy": { "type": "string" },
+        "color": { "type": "string" },
+        "storage": { "type": "string" },
+        "batteryPercentage": { "type": "number" },
+        "region": { "type": "string" },
+        "branchName": { "type": "string" }
+      },
+      "required": ["userId", "brand", "model", "imei", "costPrice", "status", "registeredBy", "color", "storage", "branchName"]
+    },
+    "sale": {
+      "title": "Sale",
+      "description": "A sales transaction",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who owns this record" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "customerAddress": { "type": "string" },
+        "deviceIds": { "type": "array", "items": { "type": "string" } },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "deviceId": { "type": "string" },
+              "brand": { "type": "string" },
+              "model": { "type": "string" },
+              "imei": { "type": "string" },
+              "costPrice": { "type": "number" },
+              "soldPrice": { "type": "number" }
+            }
+          }
+        },
+        "totalAmount": { "type": "number" },
+        "totalCost": { "type": "number" },
+        "discount": { "type": "number" },
+        "finalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string", "enum": ["cash", "card", "installment"] },
+        "installmentId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "branchName": { "type": "string" }
+      },
+      "required": ["userId", "customerId", "deviceIds", "totalAmount", "finalAmount", "paymentMethod", "createdAt", "branchName"]
+    },
+    "store": {
+      "title": "Store",
+      "description": "Shop branch information",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who owns this record" },
+        "name": { "type": "string" },
+        "location": { "type": "string" },
+        "manager": { "type": "string" },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "name", "location", "manager", "phone", "createdAt"]
+    },
+    "customer": {
+      "title": "Customer",
+      "description": "Customer profile",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who owns this record" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "email": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "name", "phone", "createdAt"]
+    },
+    "installment": {
+      "title": "Installment",
+      "description": "Installment payment plan",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who owns this record" },
+        "saleId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "totalAmount": { "type": "number" },
+        "downPayment": { "type": "number" },
+        "interestRate": { "type": "number" },
+        "monthlyInterest": { "type": "number" },
+        "monthlyPayment": { "type": "number" },
+        "remainingAmount": { "type": "number" },
+        "numberOfMonths": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "completed", "overdue"] },
+        "payments": { 
+          "type": "array", 
+          "items": { 
+            "type": "object",
+            "properties": {
+              "amount": { "type": "number" },
+              "date": { "type": "string", "format": "date-time" },
+              "note": { "type": "string" }
+            }
+          } 
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "saleId", "customerId", "totalAmount", "remainingAmount", "status"]
+    },
+    "supplier": {
+      "title": "Supplier",
+      "description": "Supplier information",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who owns this record" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "string" }
+      },
+      "required": ["userId", "name", "phone"]
+    }
+  },
+  "firestore": {
+    "/devices": { "schema": "device", "description": "Inventory of mobile devices" },
+    "/sales": { "schema": "sale", "description": "Sales records" },
+    "/customers": { "schema": "customer", "description": "Customer database" },
+    "/installments": { "schema": "installment", "description": "Payment plan tracking" },
+    "/suppliers": { "schema": "supplier", "description": "Suppliers database" },
+    "/stores": { "schema": "store", "description": "Branches database" }
+  }
+}
